@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = "35e839a65b200a76bd910c24911140bae7f594509e84a4f471c15675b3b42858"
+API_KEY = ""
 VOICE_ID = "21m00Tcm4TlvDq8ikWAM"  # example voice
 TEXT = "Hello! This is a test of an ultra-realistic voice with breathing and emotion."
 
