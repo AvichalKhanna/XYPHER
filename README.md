@@ -4,6 +4,24 @@
 
 ## Project Title - Saarthi (AI Powered Therapy Assitance Solution) 
 
+
+## Problem Statement
+Problem 2 of Healthcare 
+
+PROBLEM #2
+Access to therapy is often limited by availability, cost, and stigma. Users need an AI-powered therapy assistant that can provide empathetic conversational support, understand voice input, respond with natural voice output, and seamlessly book appointments with human therapists via function calling.
+
+DELIVERABLES:
+Conversational Therapy Chatbot offering supportive, empathetic dialogue. ✅ (provided) 
+
+Voice Input & Output integration for natural, hands-free interaction. ✅ 
+(provided) 
+
+Appointment Booking via Function Calling connecting users to human therapists. ✅ 
+(provided) 
+
+Prototype demonstrating end-to-end flow (therapy session → voice interaction → booking). ✅ (provided)
+
 <img width="1914" height="907" alt="image" src="https://github.com/user-attachments/assets/39c9da08-4396-4e7b-90a9-2df04ad4d2fe" />
 <img width="1896" height="887" alt="image" src="https://github.com/user-attachments/assets/41fc6e7c-9288-4cfb-abf3-c9163884875c" />
 
