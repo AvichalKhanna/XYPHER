@@ -1,4 +1,4 @@
-<img width="1896" height="883" alt="image" src="https://github.com/user-attachments/assets/202a7152-c42a-4157-b123-22db3f7dde7f" />Team Name - May Contain Nuts 
+## Team Name - May Contain Nuts
 
 ## **Please Read This** - > Kindly refer to the video attached in the ppt for explanation of our project, we have trained our own ml model and due to time restrictions it wasn't feasble to deploy it with the backend hence we have attached a video of our protoype. Thank You!
 
@@ -14,6 +14,8 @@ Saarthi is an AI Power Therapist that can had dual integration of its own ML mod
 <img width="1911" height="893" alt="image" src="https://github.com/user-attachments/assets/58914e0c-5ab9-44f2-ad24-95ac120bf10f" />
 
 # Tech Stack 
+
+<img width="1896" height="883" alt="image" src="https://github.com/user-attachments/assets/202a7152-c42a-4157-b123-22db3f7dde7f" />Team Name - May Contain Nuts 
 
 ## Backend 
 
