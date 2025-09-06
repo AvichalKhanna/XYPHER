@@ -6,35 +6,35 @@ tags:
 - feature-extraction
 - dense
 - generated_from_trainer
-- dataset_size:3000
+- dataset_size:405
 - loss:MultipleNegativesRankingLoss
 base_model: sentence-transformers/all-MiniLM-L6-v2
 widget:
-- source_sentence: Hey there, How can I make your day better?
+- source_sentence: How's it going?
   sentences:
-  - It’s my pleasure to help. How can I assist?
-  - Absolutely! I would be happy to guide you.
-  - Absolutely! I would be happy to guide you.
-- source_sentence: Hey there, Do you need any guidance right now?
+  - It was nice, thanks! How about yours?
+  - Going well, thanks! How about you?
+  - Not yet, how about yourself?
+- source_sentence: Do you have pets?
   sentences:
-  - Please feel free to ask me anything, I am here for you.
-  - With pleasure! How may I serve you today?
-  - I am here to make things easier for you. What do you need?
-- source_sentence: Hi, How are you feeling today?
+  - I have a cat! How about you?
+  - Absolutely! Black or with milk?
+  - Doing well, thanks! How about yourself?
+- source_sentence: I feel anxious when making decisions.
   sentences:
-  - Absolutely! I would be happy to guide you.
-  - With pleasure! How may I serve you today?
-  - Absolutely! I would be happy to guide you.
-- source_sentence: Hello, Would you like me to guide you through something?
+  - It’s going well! And yours?
+  - Sometimes breaking the decision into smaller steps makes it less stressful.
+  - Setting boundaries can help. Would you like to discuss ways to do that?
+- source_sentence: Do you like snow?
   sentences:
-  - I am at your service. Kindly tell me how I can help.
-  - It’s my pleasure to help. How can I assist?
-  - Please feel free to ask me anything, I am here for you.
-- source_sentence: Hi, May I assist you in any way?
+  - Absolutely, do you enjoy snowy weather?
+  - Yes! Do you have any?
+  - Yes! Stargazing is wonderful. How about you?
+- source_sentence: Do you like camping?
   sentences:
-  - It’s my pleasure to help. How can I assist?
-  - I am here for you. How may I support you today?
-  - Please feel free to ask me anything, I am here for you.
+  - It’s okay to adjust goals and forgive yourself. Let’s reflect on what’s achievable.
+  - I love it. How about you?
+  - I love looking at stars. And you?
 pipeline_tag: sentence-similarity
 ---
 
@@ -88,9 +88,9 @@ from sentence_transformers import SentenceTransformer
 model = SentenceTransformer("sentence_transformers_model_id")
 # Run inference
 sentences = [
-    'Hi, May I assist you in any way?',
-    'It’s my pleasure to help. How can I assist?',
-    'Please feel free to ask me anything, I am here for you.',
+    'Do you like camping?',
+    'I love it. How about you?',
+    'It’s okay to adjust goals and forgive yourself. Let’s reflect on what’s achievable.',
 ]
 embeddings = model.encode(sentences)
 print(embeddings.shape)
@@ -99,9 +99,9 @@ print(embeddings.shape)
 # Get the similarity scores for the embeddings
 similarities = model.similarity(embeddings, embeddings)
 print(similarities)
-# tensor([[1.0000, 0.9837, 0.9853],
-#         [0.9837, 1.0000, 0.9701],
-#         [0.9853, 0.9701, 1.0000]])
+# tensor([[ 1.0000,  0.5926, -0.0745],
+#         [ 0.5926,  1.0000, -0.0151],
+#         [-0.0745, -0.0151,  1.0000]])
 ```
 
 <!--
@@ -146,24 +146,25 @@ You can finetune this model on your own dataset.
 
 #### Unnamed Dataset
 
-* Size: 3,000 training samples
+* Size: 405 training samples
 * Columns: <code>sentence_0</code> and <code>sentence_1</code>
-* Approximate statistics based on the first 1000 samples:
-  |         | sentence_0                                                                         | sentence_1                                                                         |
-  |:--------|:-----------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|
-  | type    | string                                                                             | string                                                                             |
-  | details | <ul><li>min: 10 tokens</li><li>mean: 12.92 tokens</li><li>max: 16 tokens</li></ul> | <ul><li>min: 12 tokens</li><li>mean: 14.72 tokens</li><li>max: 17 tokens</li></ul> |
+* Approximate statistics based on the first 405 samples:
+  |         | sentence_0                                                                       | sentence_1                                                                        |
+  |:--------|:---------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|
+  | type    | string                                                                           | string                                                                            |
+  | details | <ul><li>min: 3 tokens</li><li>mean: 8.11 tokens</li><li>max: 13 tokens</li></ul> | <ul><li>min: 7 tokens</li><li>mean: 13.56 tokens</li><li>max: 27 tokens</li></ul> |
 * Samples:
-  | sentence_0                                              | sentence_1                                                            |
-  |:--------------------------------------------------------|:----------------------------------------------------------------------|
-  | <code>Hi, How are you feeling today?</code>             | <code>I am listening patiently. Please tell me how I may help.</code> |
-  | <code>Hey there, How are you feeling today?</code>      | <code>I am listening patiently. Please tell me how I may help.</code> |
-  | <code>Greetings, How can I make your day better?</code> | <code>I am at your service. Kindly tell me how I can help.</code>     |
+  | sentence_0                                            | sentence_1                                                                                           |
+  |:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------|
+  | <code>I feel hopeless about finding happiness.</code> | <code>Finding happiness can feel distant sometimes. Let's explore small sources of joy today.</code> |
+  | <code>I can't sleep well at night.</code>             | <code>Sometimes focusing on slow breathing or gentle stretches can help relax your mind.</code>      |
+  | <code>Do you like writing?</code>                     | <code>I love it. How about you?</code>                                                               |
 * Loss: [<code>MultipleNegativesRankingLoss</code>](https://sbert.net/docs/package_reference/sentence_transformer/losses.html#multiplenegativesrankingloss) with these parameters:
   ```json
   {
       "scale": 20.0,
-      "similarity_fct": "cos_sim"
+      "similarity_fct": "cos_sim",
+      "gather_across_devices": false
   }
   ```
 
@@ -290,19 +291,11 @@ You can finetune this model on your own dataset.
 
 </details>
 
-### Training Logs
-| Epoch  | Step | Training Loss |
-|:------:|:----:|:-------------:|
-| 1.3333 | 500  | 2.1334        |
-| 2.6667 | 1000 | 2.0782        |
-| 4.0    | 1500 | 2.0752        |
-
-
 ### Framework Versions
 - Python: 3.12.2
-- Sentence Transformers: 5.0.0
+- Sentence Transformers: 5.1.0
 - Transformers: 4.41.1
-- PyTorch: 2.6.0+cu118
+- PyTorch: 2.8.0+cpu
 - Accelerate: 1.1.1
 - Datasets: 3.1.0
 - Tokenizers: 0.19.1
