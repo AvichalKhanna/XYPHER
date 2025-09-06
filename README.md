@@ -1,6 +1,6 @@
-Team Name - May Contain Nuts 
+<img width="1896" height="883" alt="image" src="https://github.com/user-attachments/assets/202a7152-c42a-4157-b123-22db3f7dde7f" />Team Name - May Contain Nuts 
 
-## **Please Read This** - > Kindly refer to the video attached for explanation of our project, we have trained our own ml model and due to time restrictions it wasn't feasble to deploy it with the backend hence we have attached a video of our protoype. Thank You!
+## **Please Read This** - > Kindly refer to the video attached in the ppt for explanation of our project, we have trained our own ml model and due to time restrictions it wasn't feasble to deploy it with the backend hence we have attached a video of our protoype. Thank You!
 
 ## Project Title - Saarthi (AI Powered Therapy Assitance Solution) 
 
@@ -22,6 +22,8 @@ Vosk
 ElevenLabs 
 Genai 
 
+<img width="1277" height="599" alt="image" src="https://github.com/user-attachments/assets/5252a479-b420-4296-b98b-5b9943f81e00" />
+
 ## Frontend 
 
 Javascript 
@@ -29,9 +31,25 @@ TailwindCSS
 Framer-motion 
 Lucide-react
 
+<img width="1896" height="883" alt="image" src="https://github.com/user-attachments/assets/388ea91b-0bb3-4199-82a5-aed5a421fbc9" />
 
+## Extended Description 
 
+Home Page - This has an AI blob which is our main brain of the same, the blob lights up as its mood changes, it responds to queries super fast with almost no delay and is capable of listing and speaking to truly interact like a human.
 
+Summary Page - This generates a summary of the conversation that have happend till now, with the User Mood, the challenge faced, proposed solution and key concerns.
+
+Appointment page - From here you can book an appointment with just 4 simple clicks. You can see your past appointments, stats, history, and upcoming appointments, u can also browse for new therapists if you want too, and you can join your video call or voice call directly from the dashboard.
+
+## How To Manual
+
+Although we sadly couldnt host it due to financial and time limitations, you can run it easily by copying the repo, going to cd frontend and then using "npm run dev" given your system has required utilities installed.
+
+The Backend is a simple python script called "test.py" to be executed using any python compiler. 
+
+## Thank You 
+
+Please Please approach if any problem in accessing any document! 
 
 
 
